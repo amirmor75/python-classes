@@ -13,8 +13,24 @@ class LinkedList:
         
         
     def insertAtIndex(self, data, index):
-        pass
-
+        n1 = Node(data)
+        if self.head == None:
+            self.head = n1
+        if index == 0 :
+            self.insertFirst(data)
+            
+        curr = self.head
+        i = 0
+        while  curr != None and i < index:
+            prev = curr 
+            curr = curr.next
+        # i have someone infront of me or None
+        prev.next = n1
+        n1.next = curr
+        
+        
+        
+        
     # ex 1 
     # insert an element 1 place after the end.
     # example-    lst: 1 -> 3 -> 9 
