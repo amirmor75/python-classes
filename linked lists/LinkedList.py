@@ -32,12 +32,19 @@ class LinkedList:
         
         
     # ex 1 
-    # insert an element 1 place after the end.
+    # insert an element 1 place after the head.
     # example-    lst: 1 -> 3 -> 9 
     #             lst.insertOneAfterHead(10)
     #             lst: 1 -> 10 -> 3 -> 9 
     def insertOneAfterHead(self, data): # @TODO
-        pass
+        n1 = Node(data)
+        if self.head == None:
+            self.head = n1
+        n1.next = self.head.next 
+        self.head.next = n1
+        
+            
+
 
     # ex 2: 
     # insert an at the end of the list
@@ -45,7 +52,14 @@ class LinkedList:
     #             lst.insertLast(10)
     #             lst: 1 -> 3 -> 9 -> 10
     def insertLast(self, data): # @TODO
-        pass
+        n1 = Node(data)
+        if self.head == None:
+            self.head = n1
+        curr = self.head
+        while  curr.next != None:
+            curr = curr.next
+        curr.next = n1
+
 
 
 if __name__ == '__main__':
