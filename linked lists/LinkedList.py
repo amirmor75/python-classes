@@ -4,6 +4,18 @@ class LinkedList:
     def __init__(self, head):
         self.head = head    # type : Node
 
+    def __str__(self):
+        if self.head == None:
+            return '[]'
+        curr = self.head
+        str_res= '['
+        while curr != None:
+            # print(str(curr.data))
+            str_res +=   str(curr.data) +  ' -> ' 
+            curr = curr.next
+            
+        return str_res[:-4] + ']'
+    
     # inserts a the new data at the begining of the list
     def insertFirst(self, data = 'd' ):
         n1 = Node(data)
@@ -36,7 +48,7 @@ class LinkedList:
     # example-    lst: 1 -> 3 -> 9 
     #             lst.insertOneAfterHead(10)
     #             lst: 1 -> 10 -> 3 -> 9 
-    def insertOneAfterHead(self, data): # @TODO
+    def insertOneAfterHead(self, data): 
         n1 = Node(data)
         if self.head == None:
             self.head = n1
@@ -51,31 +63,57 @@ class LinkedList:
     # example-    lst: 1 -> 3 -> 9 
     #             lst.insertLast(10)
     #             lst: 1 -> 3 -> 9 -> 10
-    def insertLast(self, data): # @TODO
+    def insertLast(self, data): 
         n1 = Node(data)
         if self.head == None:
             self.head = n1
+            return
         curr = self.head
         while  curr.next != None:
             curr = curr.next
         curr.next = n1
-
+        
+    def remove_first_node(self):
+        if self.head==None:
+            return 
+        self.head = self.head.next
+    
+    def remove_last_node(self):
+        if self.head == None : 
+            return
+        if self.head.next == None : 
+            self.head = None
+            return
+        
+        curr = self.head
+        while curr.next.next != None : 
+            curr.next = None
+    
+    # ex3:
+    # remove the element at the index given 
+    #       lst: 1 -> 3 -> 9 
+    #       lst.remove_at_index(1)
+    #       lst: 1 -> 9
+    def remove_at_index(self, index ) : # @TODO
+        pass
 
 
 if __name__ == '__main__':
-    n1 = Node(10)
+    # n1 = Node(10)
     
-    l1 = list(n1)
+    l1 = LinkedList(None)
     
-    n2 = Node(5)
-    n1.next = n2
+    # n2 = Node(5)
+    # n1.next = n2
     
-    ######
+    # n3 = Node(7)
+    # n2.next = n3
     
-    l1 = list()
-    l1.append(10)
-    l1.append(5)
+    l1.insertLast( 4 )
     
-    lst = list().append(7)
+    print (l1) 
+
+    
+
     
     
