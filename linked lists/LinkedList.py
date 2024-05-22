@@ -94,23 +94,26 @@ class LinkedList:
     #       lst: 1 -> 3 -> 9 
     #       lst.remove_at_index(1)
     #       lst: 1 -> 9
-    def remove_at_index(self, index ) : # @TODO
-        pass
+    def remove_at_index(self, index ) : # אינקסים קטנים\גדולים מאורך המערך לא תופסים
+        if self.head == None : 
+            return None
+        x = self.head
+        i = 0
+        while i < index - 1:
+            x = x.next
+            i+=1
+        x.next = x.next.next
+        
 
 
 if __name__ == '__main__':
-    # n1 = Node(10)
-    
-    l1 = LinkedList(None)
-    
-    # n2 = Node(5)
-    # n1.next = n2
-    
-    # n3 = Node(7)
-    # n2.next = n3
-    
-    l1.insertLast( 4 )
-    
+    n1 = Node(1)
+    n2 = Node(3)
+    n3 = Node(9)
+    n1.next = n2
+    n2.next = n3
+    l1 = LinkedList(n1)
+    l1.remove_at_index(4)
     print (l1) 
 
     
