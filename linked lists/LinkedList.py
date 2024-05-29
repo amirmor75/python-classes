@@ -104,16 +104,81 @@ class LinkedList:
             i+=1
         x.next = x.next.next
         
+    # This method returns the index of the first occurrence
+    # of the specified element in this list,
+    # or -1 if this list does not contain the element.
+    # example
+    #       lst: 1 -> 3 -> 9 
+    #       lst.index_of(1)
+    #       lst: 1 -> 9
+    
+    def index_of(self, element):
+        i = 0 
+        pos = self.head
+        while pos != None:
+            if pos.data == element:
+                return i 
+            i += 1 
+            pos = pos.next
+        
+        return -1
+    
+    # This method returns the index of the last occurrence of
+    # the specified element in this list, or -1
+    # if this list does not contain the element.
+    # example
+    #       lst: 1 -> 3 -> 9 -> 1
+    #       lst.last_index_of(1)
+    #       3
+    
+    def last_index_of(self, element):
+        i = 0
+        pos = self.head
+        last = -1
+        while pos != None:
+            if pos.data == element:
+                last = i 
+            i += 1
+            pos = pos.next
+        return last
+
+    #This method returns a deep copy of this LinkedList.
+    # example
+    #       lst: 1 -> 3 -> 9 -> 1
+    #       x = lst.deep_copy()
+    #       'x' is actually identical to 'lst' but is a different LinkedList.
+    def deep_clone(self): # @TODO
+       pass
 
 
 if __name__ == '__main__':
+    
+    
     n1 = Node(1)
+    n2 = Node(3)
+    n1.next = n2
+
+    y = n1 # shallow copy
+    
+    x = Node(1) # deep copy
+    x.next = n2
+    
+    
+    
+    
+    
     n2 = Node(3)
     n3 = Node(9)
     n1.next = n2
     n2.next = n3
     l1 = LinkedList(n1)
-    l1.remove_at_index(4)
+    # [1 -> 3 -> 9]
+    
+    
+    
+    
+    
+    print (l1.index_of())
     print (l1) 
 
     
