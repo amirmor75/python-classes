@@ -149,6 +149,17 @@ class LinkedList:
     #       'x' is actually identical to 'lst' but is a different LinkedList.
     def deep_clone(self): # @TODO
        pass
+    def element_count_in_list(self,element):
+        pos = self.head
+        count = 0
+        while pos != None:
+            if pos.data == element:
+                count += 1
+            pos = pos.next
+        return count
+        
+
+       
 
 
 if __name__ == '__main__':
@@ -169,8 +180,10 @@ if __name__ == '__main__':
     
     n2 = Node(3)
     n3 = Node(9)
+    n4 = Node(9)
     n1.next = n2
     n2.next = n3
+    n3.next = n4
     l1 = LinkedList(n1)
     # [1 -> 3 -> 9]
     
@@ -178,7 +191,7 @@ if __name__ == '__main__':
     
     
     
-    print (l1.index_of())
+    print (l1.element_count_in_list(9))
     print (l1) 
 
     
