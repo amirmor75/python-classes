@@ -147,8 +147,26 @@ class LinkedList:
     #       lst: 1 -> 3 -> 9 -> 1
     #       x = lst.deep_copy()
     #       'x' is actually identical to 'lst' but is a different LinkedList.
-    def deep_clone(self): # @TODO
-       pass
+    def deep_clone(self): 
+        pos = self.head
+        l2 = LinkedList(None)
+        
+        ## first iteration
+        l2.head = Node(pos.data)
+        prev = l2.head
+        pos = pos.next
+        
+        while pos != None:
+            temp = Node(pos.data)
+            prev.next = temp
+            prev = temp
+            pos = pos.next 
+            
+        return l2
+   
+   
+   
+   
     def element_count_in_list(self,element):
         pos = self.head
         count = 0
@@ -158,8 +176,26 @@ class LinkedList:
             pos = pos.next
         return count
         
+    # contains(element)
+    # This method returns true if this list contains the specified element.
+    def contains(element): #@TODO
+        pass 
 
-       
+    # peek_at_index(i)
+    # This method retrieves but does not remove, the ith (element at i index) of this list.
+    def peek_at_index(self,i): #@TODO
+        pass 
+    
+
+    # depp_clone_up_to_index (start, end)
+    # deep copy from index to index (sub list)
+    def depp_clone_up_to_index(self,start, end): #@TODO
+        pass 
+    
+    # leet code question 
+    def isPalindrome(self, head): #@TODO
+        pass 
+    
 
 
 if __name__ == '__main__':
@@ -185,14 +221,18 @@ if __name__ == '__main__':
     n2.next = n3
     n3.next = n4
     l1 = LinkedList(n1)
+    a = l1.deep_clone()
+    a.remove_at_index(3)
+    a.remove_at_index(2)
+    print (l1)
+    print(a)
     # [1 -> 3 -> 9]
     
     
     
     
     
-    print (l1.element_count_in_list(9))
-    print (l1) 
+
 
     
 
