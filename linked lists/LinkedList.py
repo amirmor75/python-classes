@@ -179,12 +179,26 @@ class LinkedList:
     # contains(element)
     # This method returns true if this list contains the specified element.
     def contains(element): #@TODO
-        pass 
+        cur = self.head
+        while cur != None:
+            if cur.data == element:
+                return True
+            cur = cur.next
+        return False
 
     # peek_at_index(i)
     # This method retrieves but does not remove, the ith (element at i index) of this list.
     def peek_at_index(self,i): #@TODO
-        pass 
+        n = self.head
+        cur = 0 
+        while n != None:
+            if cur == i:
+                return n
+            n = n.next
+            cur+=1
+        return None
+            
+
     
 
     # depp_clone_up_to_index (start, end)
