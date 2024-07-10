@@ -178,7 +178,7 @@ class LinkedList:
         
     # contains(element)
     # This method returns true if this list contains the specified element.
-    def contains(element): #@TODO
+    def contains(self, element): 
         cur = self.head
         while cur != None:
             if cur.data == element:
@@ -188,7 +188,11 @@ class LinkedList:
 
     # peek_at_index(i)
     # This method retrieves but does not remove, the ith (element at i index) of this list.
-    def peek_at_index(self,i): #@TODO
+    # example
+    #       lst: 1 -> 3 -> 9 -> 1
+    #       x = lst.peek_at_index(2)
+    #       -> 9
+    def peek_at_index(self,i): 
         n = self.head
         cur = 0 
         while n != None:
@@ -203,13 +207,70 @@ class LinkedList:
 
     # depp_clone_up_to_index (start, end)
     # deep copy from index to index (sub list)
-    def depp_clone_up_to_index(self,start, end): #@TODO
+    # example
+    #       lst: 1 -> 3 -> 9 -> 1
+    #       x = lst.deep_clone_up_to_index(1,2)
+    #       lst: 3 -> 9 
+
+    def deep_clone_up_to_index(self,start, end):
+        i = 0
+        pos = self.head 
+        while i<start:
+            pos=pos.next
+            i+=1
+        # i = 1      
+        
+        l2 = LinkedList(None)
+        
+        ## first iteration
+        l2.head = Node(pos.data)
+        prev = l2.head
+        pos = pos.next
+        # pos -> 9 
+        
+        while pos != None and i < end:
+            temp = Node(pos.data)
+            prev.next = temp
+            prev = temp
+            pos = pos.next 
+            i+=1
+            
+        return l2
+    
+    
+    # leet code question
+    # o(n^2) time, and o(1) space 
+    def is_palindrome_naive_sol(self, head): #@TODO
         pass 
+    # leet code question
+    # o(n) time, and o(n) space 
+    def is_palindrome_medium(self, head): #@TODO
+        pass
     
     # leet code question 
-    def isPalindrome(self, head): #@TODO
+    def isPalindrome(self, head): 
         pass 
     
+    def lst_reverse_deep_copy(lst): # helper function for is_palindrome_medium()
+        pos = lst.head
+        rev_lst = LinkedList(None)
+        
+        prev = Node(pos.data)
+        pos = pos.next
+        
+        while pos!= None:
+            
+            temp = Node(pos.data)
+            temp.next = prev
+            prev = temp
+            
+            pos = pos.next
+        
+        rev_lst.head = prev
+        return rev_lst
+            
+            
+        
 
 
 if __name__ == '__main__':
@@ -227,19 +288,19 @@ if __name__ == '__main__':
     
     
     
-    
     n2 = Node(3)
     n3 = Node(9)
-    n4 = Node(9)
+    n4 = Node(1)
     n1.next = n2
     n2.next = n3
     n3.next = n4
     l1 = LinkedList(n1)
-    a = l1.deep_clone()
-    a.remove_at_index(3)
-    a.remove_at_index(2)
-    print (l1)
-    print(a)
+    
+    x = l1.peek_at_index(2)
+    print(x.data)
+    
+    print (l1.deep_clone_up_to_index(1,0))
+    
     # [1 -> 3 -> 9]
     
     
